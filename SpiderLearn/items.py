@@ -8,7 +8,8 @@
 import scrapy
 
 
-class SpiderlearnItem(scrapy.Item):
+class SpiderLearnItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    text = scrapy.Field()
+    author = scrapy.Field()
