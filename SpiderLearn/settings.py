@@ -14,7 +14,6 @@ BOT_NAME = 'SpiderLearn'
 SPIDER_MODULES = ['SpiderLearn.spiders']
 NEWSPIDER_MODULE = 'SpiderLearn.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = 'SpiderLearn (+http://www.yourdomain.com)'
 
@@ -24,8 +23,43 @@ NEWSPIDER_MODULE = 'SpiderLearn.spiders'
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+# 配置当前请求处理最大数
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
+
+# Override the default request headers:
+DEFAULT_REQUEST_HEADERS = {
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'en',
+}
+
+# 中间件 越小优先级越高
+# Enable or disable spider middlewares
+# SPIDER_MIDDLEWARES = {
+#    'SpiderLearn.middlewares.SpiderLearnMiddleware': 543,
+# }
+
+# Enable or disable downloader middlewares
+# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
+DOWNLOADER_MIDDLEWARES = {
+    'SpiderLearn.middlewares.AoisolasMiddleware': 1,
+}
+
+# 插件
+# Enable or disable extensions
+# EXTENSIONS = {
+#    'scrapy.extensions.telnet.TelnetConsole': None,
+# }
+
+# pipelines 处理数据
+# Configure item pipelines
+# 设置图片存储路径
+IMAGES_STORE = 'D:\meizi'
+
+# 启动pipeline中间件
+ITEM_PIPELINES = {
+    'SpiderLearn.pipelines.AoisolasPipeline': 300,
+}
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
@@ -40,37 +74,6 @@ ROBOTSTXT_OBEY = True
 
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
-
-# Override the default request headers:
-DEFAULT_REQUEST_HEADERS = {
-  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-  'Accept-Language': 'en',
-}
-
-# Enable or disable spider middlewares
-# See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-# SPIDER_MIDDLEWARES = {
-#    'SpiderLearn.middlewares.SpiderlearnSpiderMiddleware': 543,
-#}
-
-# Enable or disable downloader middlewares
-# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'SpiderLearn.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
-
-# Enable or disable extensions
-# See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
-# EXTENSIONS = {
-#    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
-
-# Configure item pipelines
-# See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'SpiderLearn.pipelines.SpiderLearnPipeline': 300,
-}
-
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # AUTOTHROTTLE_ENABLED = True

@@ -5,7 +5,7 @@ from scrapy.selector import Selector
 from scrapy.http import Request
 import sys
 
-from SpiderLearn.items import SpiderLearnItem
+from SpiderLearn.items import AoisolasItem
 
 
 class LearnSpider(scrapy.Spider):
@@ -31,7 +31,7 @@ class LearnSpider(scrapy.Spider):
         divs = selector.xpath("//div[@class='quote post']").extract()
         for item in divs:
             # print(item)
-            learn_item = SpiderLearnItem()
+            learn_item = AoisolasItem()
 
             text = Selector(text=item).xpath("//span[@class='text']/text()").extract()[0]
             author = Selector(text=item).xpath("//span/small[@class='author']/text()").extract()[0]
