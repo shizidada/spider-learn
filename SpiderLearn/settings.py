@@ -42,7 +42,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'SpiderLearn.middlewares.AoisolasMiddleware': 1,
+    # 'SpiderLearn.middlewares.AoisolasMiddleware': 1,
 }
 
 # 插件
