@@ -7,6 +7,11 @@
 
 from scrapy import signals
 
+from selenium import webdriver
+from scrapy.http.response.html import HtmlResponse
+from selenium.webdriver.chrome.options import Options
+import time
+
 
 class MoosespiderSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
@@ -101,3 +106,24 @@ class MoosespiderDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class SeleniumMiddleware(object):
+
+    def __init__(self):
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        self.driver = webdriver.Chrome(
+            executable_path=r'E:\\Code\\python\\chromedriver.exe', options=chrome_options)
+
+    def process_request(self, request, spider):
+        self.driver.get(request.url)
+        time.sleep(1.5)
+        # self.driver.switch_to_frame(self.driver.find_element_by_name("contentFrame"))
+        myIframe = self.driver.find_element_by_id('g_iframe')
+        self.driver.switch_to.frame(myIframe)
+        source = self.driver.page_source
+        # print(" ------------------  process_request  source -------------------------- ", source)
+        response = HtmlResponse(
+            url=self.driver.current_url, body=source, encoding='utf-8', request=request)
+        return response
