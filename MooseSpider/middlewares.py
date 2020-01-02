@@ -114,7 +114,7 @@ class SeleniumMiddleware(object):
         chrome_options = Options()
         chrome_options.add_argument('--headless')
         self.driver = webdriver.Chrome(
-            executable_path=r'E:\\Code\\python\\chromedriver.exe', options=chrome_options)
+            executable_path=r'/Users/taohua/works/Python/chromedriver', options=chrome_options)
 
     def process_request(self, request, spider):
         self.driver.get(request.url)
