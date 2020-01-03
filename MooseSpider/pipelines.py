@@ -5,12 +5,13 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
-
 from pymongo import MongoClient
+
 
 class MoosespiderPipeline(object):
 
-    collection_name = 'music'
+    # 云音乐飙升榜
+    collection_name = 'music_soaring_list_comments'
 
     def __init__(self, mongo_uri, mongo_db):
         self.mongo_uri = mongo_uri
@@ -18,10 +19,9 @@ class MoosespiderPipeline(object):
 
     @classmethod
     def from_crawler(cls, crawler):
-        return cls(
-            mongo_uri=crawler.settings.get('MONGO_URI'),
-            mongo_db=crawler.settings.get('MONGO_DATABASE', 'items')
-        )
+        return cls(mongo_uri=crawler.settings.get('MONGO_URI'),
+                   mongo_db=crawler.settings.get('MONGO_DATABASE',
+                                                 'netease_cloud_musics'))
 
     def open_spider(self, spider):
         self.client = MongoClient(self.mongo_uri)

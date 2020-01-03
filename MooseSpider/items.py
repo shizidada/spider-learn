@@ -7,10 +7,12 @@
 
 import scrapy
 
+
 class MoosespiderItem(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
     pass
+
 
 class NeteaseMusicItem(scrapy.Item):
     # define the fields for your item here like:
@@ -18,6 +20,16 @@ class NeteaseMusicItem(scrapy.Item):
     hot_rk = scrapy.Field()
     song_pic = scrapy.Field()
     song_name = scrapy.Field()
+    song_id = scrapy.Field()
     song_time = scrapy.Field()
     singer_name = scrapy.Field()
+    pass
+
+
+class NeteaseMusicCommentItem(scrapy.Item):
+    # define the fields for your item here like:
+    avator = scrapy.Field()
+    user_id = scrapy.Field()
+    user_name = scrapy.Field()
+    comment_content = scrapy.Field()
     pass

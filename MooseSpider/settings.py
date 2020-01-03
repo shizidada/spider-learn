@@ -14,7 +14,6 @@ BOT_NAME = 'MooseSpider'
 SPIDER_MODULES = ['MooseSpider.spiders']
 NEWSPIDER_MODULE = 'MooseSpider.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'MooseSpider (+http://www.yourdomain.com)'
 
@@ -39,10 +38,14 @@ ROBOTSTXT_OBEY = False
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-# }
+DEFAULT_REQUEST_HEADERS = {
+    'Accept':
+    'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language':
+    'en',
+    'User-Agent':
+    'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36'
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
@@ -53,7 +56,7 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-  'MooseSpider.middlewares.SeleniumMiddleware': 543,
+    'MooseSpider.middlewares.SeleniumMiddleware': 543,
 }
 
 # Enable or disable extensions
@@ -89,7 +92,6 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-
 # mongodb config
 MONGO_URI = "127.0.0.1:27017"
-MONGO_DATABASE = "learn"
+MONGO_DATABASE = "netease_cloud_musics"
