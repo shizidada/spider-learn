@@ -25,7 +25,7 @@ class NeteaseCloudMusicSpider(scrapy.Spider):
 
         for comment_item in comments_list:
 
-            avator = Selector(text=comment_item).xpath(
+            avatar = Selector(text=comment_item).xpath(
                 "//div[@class='itm']/div[@class='head']/a/img/@src"
             ).extract_first()
 
@@ -41,7 +41,7 @@ class NeteaseCloudMusicSpider(scrapy.Spider):
                 "//div[@class='itm']/div[@class='cntwrap']/div/div[@class='cnt f-brk']/text()"
             ).extract_first().split('：')[-1]
 
-            yield NeteaseMusicCommentItem(avator=avator,
+            yield NeteaseMusicCommentItem(avatar=avatar,
                                           user_id=user_id,
                                           user_name=user_name,
                                           comment_content=comment_content)
