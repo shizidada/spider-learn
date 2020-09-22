@@ -110,34 +110,34 @@ class MoosespiderDownloaderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-class SeleniumMiddleware(object):
-
-    def __init__(self):
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-
-        executable_path = r'E:\\Code\\python\\chromedriver.exe' if (
-            sys.platform == 'win32') else r'/Users/taohua/works/Python/chromedriver'
-
-        self.driver = webdriver.Chrome(
-            executable_path=executable_path, options=chrome_options)
-
-    def process_request(self, request, spider):
-        self.driver.get(request.url)
-        time.sleep(1.5)
-        # self.driver.switch_to_frame(self.driver.find_element_by_name("contentFrame"))
-        myIframe = self.driver.find_element_by_id('g_iframe')
-        self.driver.switch_to.frame(myIframe)
-        
-        time.sleep(1.5)
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-
-        # time.sleep(5)
-        # next_element = self.driver.find_element_by_link_text("下一页")
-        # next_element.click()
-
-        source = self.driver.page_source
-        # print(" ------------------  process_request  source -------------------------- ", source)
-        response = HtmlResponse(
-            url=self.driver.current_url, body=source, encoding='utf-8', request=request)
-        return response
+# class SeleniumMiddleware(object):
+#
+#     def __init__(self):
+#         chrome_options = Options()
+#         chrome_options.add_argument('--headless')
+#
+#         executable_path = r'E:\\Code\\python\\chromedriver.exe' if (
+#             sys.platform == 'win32') else r'/Users/taohua/works/Python/chromedriver'
+#
+#         self.driver = webdriver.Chrome(
+#             executable_path=executable_path, options=chrome_options)
+#
+#     def process_request(self, request, spider):
+#         self.driver.get(request.url)
+#         time.sleep(1.5)
+#         # self.driver.switch_to_frame(self.driver.find_element_by_name("contentFrame"))
+#         myIframe = self.driver.find_element_by_id('g_iframe')
+#         self.driver.switch_to.frame(myIframe)
+#
+#         time.sleep(1.5)
+#         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+#
+#         # time.sleep(5)
+#         # next_element = self.driver.find_element_by_link_text("下一页")
+#         # next_element.click()
+#
+#         source = self.driver.page_source
+#         # print(" ------------------  process_request  source -------------------------- ", source)
+#         response = HtmlResponse(
+#             url=self.driver.current_url, body=source, encoding='utf-8', request=request)
+#         return response

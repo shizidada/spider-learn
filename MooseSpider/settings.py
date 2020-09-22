@@ -56,7 +56,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'MooseSpider.middlewares.SeleniumMiddleware': 543,
+    # 'MooseSpider.middlewares.SeleniumMiddleware': 543,
 }
 
 # Enable or disable extensions
