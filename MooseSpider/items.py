@@ -47,3 +47,11 @@ class ShiCiItem(scrapy.Item):
     poetry_content = scrapy.Field()
     # 诗词序号
     poetry_num = scrapy.Field()
+
+
+class VideoItem(scrapy.Item):
+    video_url = scrapy.Field()
+
+    video_title = scrapy.Field()
+
+    video_time = scrapy.Field()

@@ -2,8 +2,10 @@
 Thumbs.db
 db.json
 *.log
+*.html
 node_modules/
 public/
+mp4/
 .deploy*/
 .idea
 *.pyc
