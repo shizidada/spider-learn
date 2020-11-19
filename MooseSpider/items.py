@@ -54,4 +54,6 @@ class VideoItem(scrapy.Item):
 
     video_title = scrapy.Field()
 
+    video_desc = scrapy.Field()
+
     video_time = scrapy.Field()
