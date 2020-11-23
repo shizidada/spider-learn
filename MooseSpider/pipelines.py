@@ -66,12 +66,12 @@ from pymongo import MongoClient
 #         self.es_client.index(index="shi_ci_ming_ju", doc_type="poetry", body=dict(item))
 
 class MooseSpiderPipeline(object):
-    collection_name = 'video_list'
+    collection_name = 'shici_item'
 
     @classmethod
     def from_crawler(cls, crawler):
         return cls(mongo_uri=crawler.settings.get('MONGO_URI'),
-                   mongo_db=crawler.settings.get('MONGO_DATABASE', 'insiji'))
+                   mongo_db=crawler.settings.get('MONGO_DATABASE', 'shicimingju'))
 
     def __init__(self, mongo_uri, mongo_db):
         self.client = MongoClient(mongo_uri)

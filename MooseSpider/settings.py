@@ -95,4 +95,4 @@ ITEM_PIPELINES = {
 # mongodb config
 MONGO_URI = "127.0.0.1:27017"
 # MONGO_DATABASE = "netease_cloud_musics"
-MONGO_DATABASE = "insiji"
+MONGO_DATABASE = "shicimingju"
